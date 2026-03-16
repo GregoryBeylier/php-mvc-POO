@@ -1,9 +1,9 @@
 <?php
 
 // Fichier : bdd.php
-class DBconnect
+class DBConnect
 {
-    public function getPDO()
+    public function getPdo()
     {
         try {
             $pdo = new PDO(

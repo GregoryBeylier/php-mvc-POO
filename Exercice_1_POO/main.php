@@ -1,9 +1,8 @@
 <?php
-require 'classBdd.php';
+require 'contactManager.php';
 
-// Instanciation de la classe DBConnect et récupération de la connexion PDO
-$db = new DBConnect();
-$pdo = $db->getPDO();
+$contactManager = new ContactManager();
+
 
 // Boucle pour lire les commandes de l'utilisateur
 while (true) {
