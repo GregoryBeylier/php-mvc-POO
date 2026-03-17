@@ -53,6 +53,6 @@ class contact
     // Méthode pour afficher les informations du contact
     public function __toString(): string
     {
-        return "contact{id={$this->id}, name={$this->name}, email={$this->email}, phone={$this->phone}}";
+        return "{$this->id} - {$this->name} | {$this->email} | {$this->phone}";
     }
 }

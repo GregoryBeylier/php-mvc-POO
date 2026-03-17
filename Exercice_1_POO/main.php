@@ -11,5 +11,9 @@ while (true) {
 
     if ($line === "list") {
         echo "affichage de la liste...\n";
+        $contacts = $contactManager->findAll();
+        foreach ($contacts as $contact) {
+            echo $contact . "\n";
+        }
     }
 }
