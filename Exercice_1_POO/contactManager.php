@@ -1,5 +1,6 @@
 <?php
 require 'DBConnect.php';
+require 'contact.php';
 
 class ContactManager
 {
@@ -16,7 +17,19 @@ class ContactManager
     public function findAll()
     {
         $stmt = $this->pdo->query("SELECT * FROM contacts");
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        return $result;
+        $resulat = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $contacts = [];
+
+        foreach ($resulat as $row) {
+            $contact = new contact();
+            $contact->setId($row['id']);
+            $contact->setName($row['name']);
+            $contact->setEmail($row['email']);
+            $contact->setPhone($row['phone_number']);
+            $contacts[] = $contact;
+        }
+
+        return $contacts;
     }
 }
