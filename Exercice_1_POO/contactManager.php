@@ -66,4 +66,11 @@ class ContactManager
         $stmt = $this->pdo->prepare("DELETE FROM contacts WHERE id = ?");
         $stmt->execute([$id]);
     }
+
+    // Méthode pour mettre à jour un contact existant
+    public function modifyContact($id, $name, $email, $phone)
+    {
+        $stmt = $this->pdo->prepare("UPDATE contacts SET `name` = ?, email = ?, phone_number = ? WHERE id = ?");
+        $stmt->execute([$name, $email, $phone, $id]);
+    }
 }

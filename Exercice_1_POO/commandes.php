@@ -41,4 +41,30 @@ class commandes
         $this->contactManager->deleteContact($id);
         echo "contact supprimé avec succès !\n";
     }
+
+    // Méthode pour afficher les commandes disponibles
+    public function help()
+    {
+        echo "Commandes disponibles :\n";
+        echo "list : afficher la liste des contacts\n";
+        echo "detail <id> : afficher les détails d'un contact\n";
+        echo "create <nom> <email> <téléphone> : créer un nouveau contact\n";
+        echo "delete <id> : supprimer un contact\n";
+        echo "help : afficher les commandes disponibles\n";
+        echo "modify <id>,<nom>,<email>,<téléphone> : mettre à jour un contact\n";
+        echo "exit : quitter l'application\n";
+    }
+
+    // Méthode pour mettre à jour un contact existant
+    public function modify($id, $name, $email, $phone)
+    {
+        $this->contactManager->modifyContact($id, $name, $email, $phone);
+        echo "contact mis à jour avec succès !\n";
+    }
+
+    // Méthode pour clear le terminal
+    public function clear()
+    {
+        echo "\033[2J\033[H"; // ANSI escape code pour effacer l'écran et repositionner le curseur
+    }
 }
