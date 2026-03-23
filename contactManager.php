@@ -1,6 +1,6 @@
 <?php
 require 'DBConnect.php';
-require 'contact.php';
+require 'Contact.php';
 
 class ContactManager
 {
@@ -18,11 +18,10 @@ class ContactManager
     {
         $stmt = $this->pdo->query("SELECT * FROM contacts");
         $resulat = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
         $contacts = [];
 
         foreach ($resulat as $row) {
-            $contact = new contact();
+            $contact = new Contact();
             $contact->setId($row['id']);
             $contact->setName($row['name']);
             $contact->setEmail($row['email']);
@@ -41,16 +40,18 @@ class ContactManager
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($row) {
-            $contact = new contact();
+            $contact = new Contact();
             $contact->setId($row['id']);
             $contact->setName($row['name']);
             $contact->setEmail($row['email']);
             $contact->setPhone($row['phone_number']);
+
             return $contact;
-        } else {
-            echo "contact non trouvé.\n";
-            return null;
         }
+
+        echo "contact non trouvé.\n";
+
+        return null;
     }
 
     // Méthode pour créer un nouveau contact

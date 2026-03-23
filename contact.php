@@ -1,12 +1,17 @@
 <?php
 
-class contact
+class Contact
 {
-
     private $id;
     private $name;
     private $email;
     private $phone;
+
+    // Méthode pour afficher les informations du contact
+    public function __toString(): string
+    {
+        return "{$this->id} - {$this->name} | {$this->email} | {$this->phone}";
+    }
 
     // Getters
     public function getId(): ?int
@@ -48,11 +53,5 @@ class contact
     public function setPhone(?string $phone): void
     {
         $this->phone = $phone;
-    }
-
-    // Méthode pour afficher les informations du contact
-    public function __toString(): string
-    {
-        return "{$this->id} - {$this->name} | {$this->email} | {$this->phone}";
     }
 }

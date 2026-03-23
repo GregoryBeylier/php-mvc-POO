@@ -4,7 +4,7 @@ require 'ContactManager.php';
 
 
 
-class commandes
+class Commande
 {
     private $contactManager;
 
@@ -13,6 +13,7 @@ class commandes
     {
         $this->contactManager = new ContactManager();
     }
+
     // Méthode pour afficher la liste des contacts
     public function list()
     {
@@ -22,12 +23,14 @@ class commandes
             echo $contact . "\n";
         }
     }
+
     // Méthode pour afficher les détails d'un contact
     public function detail($id)
     {
         $contact = $this->contactManager->findbyId($id);
         echo $contact . "\n";
     }
+
     // Méthode pour créer un nouveau contact
     public function create($name, $email, $phone)
     {

@@ -1,7 +1,7 @@
 <?php
-require 'commandes.php';
+require 'Commande.php';
 
-$commandes = new commandes();
+$commandes = new Commande();
 
 
 // Boucle pour lire les commandes de l'utilisateur
@@ -15,9 +15,9 @@ while (true) {
         $id = $matches[1];
         $commandes->detail($id);
     } else if (preg_match('/^create (.+),(.+),(.+)$/', $line, $matches)) {
-        $name = $matches[1];
-        $email = $matches[2];
-        $phone = $matches[3];
+        $name = htmlspecialchars($matches[1]);
+        $email = htmlspecialchars($matches[2]);
+        $phone = htmlspecialchars($matches[3]);
         $commandes->create($name, $email, $phone);
     } else if (preg_match('/^delete (\d+)$/', $line, $matches)) {
         $id = $matches[1];
@@ -26,9 +26,9 @@ while (true) {
         $commandes->help();
     } else if (preg_match('/^modify (\d+),(.+),(.+),(.+)$/', $line, $matches)) {
         $id = $matches[1];
-        $name = $matches[2];
-        $email = $matches[3];
-        $phone = $matches[4];
+        $name = htmlspecialchars($matches[2]);
+        $email = htmlspecialchars($matches[3]);
+        $phone = htmlspecialchars($matches[4]);
         $commandes->modify($id, $name, $email, $phone);
     } else if ($line === "exit") {
         echo "Au revoir !\n";
